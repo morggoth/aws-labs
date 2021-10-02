@@ -78,8 +78,8 @@ resource "aws_route_table_association" "public" {
   subnet_id      = aws_subnet.public.id
 }
 
-resource "aws_security_group" "allow_ssh" {
-  name        = "allow-ssh"
+resource "aws_security_group" "public" {
+  name        = "public-subnet-sg"
   description = "Allow SSH inbound traffic"
   vpc_id      = aws_vpc.lab.id
 
@@ -98,14 +98,14 @@ resource "aws_security_group" "allow_ssh" {
   }
 
   tags = merge(
-    { Name = "Allow SSH" },
+    { Name = "public-subnet-sg" },
     local.common_tags
   )
 }
 
 resource "aws_key_pair" "public" {
   key_name   = "${var.lab_name}-key-for-public-subnet"
-  public_key = file("${path.module}/files/vpc-lab-public.pub")
+  public_key = file("${path.module}/${var.key_public_path}.pub")
 
   tags = merge(
     { Name = "${var.lab_name}-key-for-public-subnet" },

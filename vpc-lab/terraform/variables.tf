@@ -1,4 +1,4 @@
-# Common variables
+# Common
 variable "aws_region" {
   type        = string
   description = "Default region for AWS provider"
@@ -9,13 +9,13 @@ variable "lab_name" {
   default     = "vpc-lab"
 }
 
-# VPC variables
+# VPC
 variable "vpc_cidr_block" {
   type        = string
   description = "CIDR block for our VPC"
 }
 
-# Subnet variables
+# Subnet
 variable "subnet_cidr_public" {
   type        = string
   description = "CIDR block for a public subnet"
@@ -44,6 +44,18 @@ variable "rt_public_cidr_public" {
 variable "sg_allow_ssh_cidr" {
   type        = string
   description = "CIDR block for a SSH allow rule"
+}
+
+# Key-pair
+variable "key_public_path" {
+  type        = string
+  description = "Path to a private SSH-key for a Public subnet instances, relative to the module's directory"
+  default     = "files/vpc-lab-public"
+}
+variable "key_private_path" {
+  type        = string
+  description = "Path to a private SSH-key for a Private subnet instances, relative to the module's directory"
+  default     = "files/vpc-lab-private"
 }
 
 # EC2 instance

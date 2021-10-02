@@ -193,3 +193,9 @@ tags
 [._]*.un~
 
 # End of https://www.toptal.com/developers/gitignore/api/terraform,macos,vim,intellij
+
+# Custom rules
+
+# Private SSH keys for the Lab
+vpc-lab/terraform/files/vpc-lab-public
+vpc-lab/terraform/files/vpc-lab-private
