@@ -19,5 +19,5 @@ output "ec2_public_dns" {
 }
 
 output "public_ec2_connection_string" {
-  value = "ssh ec2-user@${aws_instance.public.public_ip} -i ${path.module}/files/vpc-lab-public"
+  value = "ssh ec2-user@${aws_instance.public.public_ip} -i ${path.module}/${var.key_public_path}"
 }
